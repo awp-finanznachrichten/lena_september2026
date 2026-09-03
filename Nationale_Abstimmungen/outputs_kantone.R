@@ -1,6 +1,14 @@
 ###Output generieren für Datawrapper
   #Output Abstimmungen Kantone
   output_dw_kantone <- get_output_kantone(results)
+
+  output_dw_kantone <- output_dw_kantone %>%
+    left_join(meta_kt,join_by(Kantons_Nr == bfs_ID)) %>%
+    select(Kantons_Nr,Kanton_d,Kanton_f,Kanton_i,
+           Ja_Stimmen_In_Prozent_Kanton,Nein_Stimmen_In_Prozent_Kanton,
+           Kanton_color,Gemeinden_overall,Gemeinden_counted,Legende,
+           Text_de,Text_fr,Text_it,link_wappen)
+  
   write.csv(output_dw_kantone,paste0("Output_Switzerland/",vorlagen_short[i],"_dw_kantone.csv"), na = "", row.names = FALSE, fileEncoding = "UTF-8")
   
   cat(paste0("\nGenerated output for Vorlage ",vorlagen_short[i],"\n"))

@@ -17,7 +17,7 @@ for (i in 1:length(vorlagen_short)) {
   #Daten anpassen Gemeinden
   results <- treat_gemeinden(results)
   results <- format_data_g(results)
-  
+
   #Kantonsdaten hinzufügen
   results_kantone <- get_results(json_data,i,"cantonal")
   

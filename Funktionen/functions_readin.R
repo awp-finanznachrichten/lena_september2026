@@ -141,7 +141,8 @@ format_data_g <- function(results) {
            Kanton_d,
            Kanton_f,
            Kanton_i,
-           Kantons_Nr)
+           Kantons_Nr,
+           link_wappen)
   return(out)
 }
 

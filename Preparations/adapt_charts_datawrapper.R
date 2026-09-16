@@ -4,12 +4,13 @@ grafiken_uebersicht <- read_excel("./Data/metadaten_grafiken_eidgenoessische_Abs
 #  filter(grepl("Kantonale Vorlage",Typ) == TRUE)
 
 grafiken_uebersicht <- datawrapper_codes %>%
-  filter(date == "2026-03-08",
-         Vorlage == "CH_Individualbesteuerung",
-         Sprache == "de-DE",
+  filter(date == "2026-09-27",
+         #Vorlage == "CH_Individualbesteuerung",
+         #Sprache == "de-DE",
          grepl("Kanton ",Typ) == TRUE)
 
-
+View(grafiken_uebersicht)
+grafiken_uebersicht
 for (i in 1:nrow(grafiken_uebersicht)) {
 
 metadata_chart <- dw_retrieve_chart_metadata(grafiken_uebersicht$ID[i])
@@ -33,8 +34,8 @@ for (i in 1:nrow(grafiken_uebersicht)) {
 }
 
 
-
-metadata_chart <- dw_retrieve_chart_metadata("smg56")
+View(metadata_chart)
+metadata_chart <- dw_retrieve_chart_metadata("zxrLE")
 
 
 dw_edit_chart("smg56",

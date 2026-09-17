@@ -1,10 +1,10 @@
 #Set Working Path
-MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20260927_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20260927_LENA_Abstimmungen"
 #MAIN_PATH <- "C:/Automatisierungen/lena_november2025"
 setwd(MAIN_PATH)
 
 #Path Github Token (do NOT include in Repository)
-WD_GITHUB_TOKEN <- "C:/Users/simon/OneDrive/Github_Token/token.txt"
+WD_GITHUB_TOKEN <- "C:/Users/sw/OneDrive/Github_Token/token.txt"
 #WD_GITHUB_TOKEN <- "C:/Github_Token/token.txt"
 
 #Load Libraries and Functions
@@ -58,8 +58,8 @@ if (time_check_national == FALSE || simulation == TRUE) {
   source("./Config/commit.R", encoding="UTF-8")
 
   #Tabellen aktualisieren
-  source("./top_flop/top_flop_run.R", encoding="UTF-8")
-  source("./top_cantons/run_top_flop_cant.R", encoding="UTF-8")
+  #source("./top_flop/top_flop_run.R", encoding="UTF-8")
+  #source("./top_cantons/run_top_flop_cant.R", encoding="UTF-8")
 }
 
 if (time_check_kantonal == FALSE || simulation == TRUE) {   

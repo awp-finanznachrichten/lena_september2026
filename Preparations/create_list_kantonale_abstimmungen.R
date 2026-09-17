@@ -1,5 +1,5 @@
 #Set Working Path
-MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20260927_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20260927_LENA_Abstimmungen"
 setwd(MAIN_PATH)
 
 #Load Libraries and Functions
@@ -20,7 +20,6 @@ kantone_list <- json_data_kantone[["kantone"]]
 kantonale_vorlagen_list <- data.frame("Kanton","Vorlage_ID","Vorlage_d","Vorlage_f","Vorlage_i")
 colnames(kantonale_vorlagen_list) <- c("Kanton","Vorlage_ID","Vorlage_d","Vorlage_f","Vorlage_i")
 
-View(json_data_kantone)
 for (k in 1:nrow(kantone_list)) {
 
 vorlagen <- kantone_list$vorlagen[[k]]
@@ -59,8 +58,6 @@ kantonale_vorlagen_list <- rbind(kantonale_vorlagen_list,new_entry)
 
 
 }
-
-  
 }
 
 #Daten Speichern

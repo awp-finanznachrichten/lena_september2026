@@ -1,8 +1,8 @@
 ##importer res. cantonaux
 
-link_jun <- "https://ogd-static.voteinfo-app.ch/v1/ogd/sd-t-17-02-20260614-eidgAbstimmung.json"
+link <- "https://ogd-static.voteinfo-app.ch/v1/ogd/sd-t-17-02-20260927-eidgAbstimmung.json"
 
-vot_raw <- jsonlite::fromJSON(link_jun)
+vot_raw <- jsonlite::fromJSON(link)
 
 
 ##issue list
@@ -28,8 +28,8 @@ mapping_issues <- vot_raw$schweiz$vorlagen %>%
   group_by(vorlagenId) %>%
   #mutate(vorlagenId = case_when(vorlagenId == 6780 ~ 6800, #a supprimer! 6821,6822,6830,6840,6850
    #                             vorlagenId == 6790 ~ 6810)) %>% #a supprimer
-  mutate(issue_number = case_when(vorlagenId == 6860 ~ 1,
-                                  vorlagenId == 6870 ~ 2)) %>%
+  mutate(issue_number = case_when(vorlagenId == 6880 ~ 1,
+                                  vorlagenId == 6890 ~ 2)) %>%
   tidyr::unnest(vorlagenTitel) %>%
   dplyr::left_join(vorlagen_names, join_by("vorlagenId" == "Vorlage_ID")) %>%
   select(vorlagenId,langKey, issue_number, text,Vorlage_f, Vorlage_d, Vorlage_i)
@@ -58,7 +58,6 @@ cant_names <- readr::read_csv(cant_link) %>%
 
 
 
-
 cant <- vot_raw$schweiz$vorlagen$kantone %>%
   purrr::pluck() %>%
   dplyr::bind_rows() %>%
@@ -69,7 +68,7 @@ cant <- vot_raw$schweiz$vorlagen$kantone %>%
       issue_number == 1 ~ issues_list_fr[1],
       issue_number == 2 ~ issues_list_fr[2]
     )
-    ) %>%
+  ) %>%
   tidyr::unnest(resultat) %>%
   dplyr::filter(gebietAusgezaehlt) %>%
   dplyr::mutate(geoLevelnummer = as.numeric(geoLevelnummer),
@@ -79,19 +78,23 @@ cant <- vot_raw$schweiz$vorlagen$kantone %>%
   dplyr::mutate(cantonNoStimmenInProzent = 100-cantonJaStimmenInProzent) %>%
   dplyr::ungroup() %>%
   dplyr::select(geoLevelnummer,canton_name,issue_number,cantonJaStimmenInProzent,cantonNoStimmenInProzent,issue) %>%
-  #dplyr::select(geoLevelnummer,canton_name,issue_number, cantonJaStimmenInProzent,cantonNoStimmenInProzent) %>%
+  dplyr::select(geoLevelnummer,canton_name,issue_number, cantonJaStimmenInProzent,cantonNoStimmenInProzent) %>%
   dplyr::left_join(cant_names, by = c("geoLevelnummer" = "Kantons_Nr")) %>%
   dplyr::rename(name = canton_name) %>%
   dplyr::left_join(mapping_issues, by = c("issue_number" = "issue_number")) %>%
   filter(langKey == "fr",
          issue_number !=3) 
 
+#glimpse(cant)
+
 #set.seed(123)  # optionnel : pour reproductibilité
 
 #cant_test <- cant %>%
- # dplyr::mutate(
+#  dplyr::mutate(
 #    cantonJaStimmenInProzent = round(runif(n(), 0, 100), 1),
 #    cantonNoStimmenInProzent = round(runif(n(), 0, 100), 1)
 #  )
+
+#glimpse(cant_test)
 
 #cant <- cant_test

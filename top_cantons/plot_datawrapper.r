@@ -3,9 +3,9 @@
 
 
 #chart id
-id_fr <- "ErkU1"
-id_de <- "Nccyy"
-id_it <- "Mdi2U"
+id_fr <- "3AMo7"
+id_de <- "lz2ru"
+id_it <- "YG8ja"
 
 
 

@@ -1,33 +1,27 @@
 
 manual_chart_ids <-  c(
   # FR
-  "b6w1U","yuXg3",
-  "N5EPN","Gbd3L",
-  "iOHcE","CxB1Z",
-  "b51TV","ghurA",
-  "bKE7p","bP1w2",
+  "c76ol","m0RIF",
+  "Fh5jl","u1LWo",
   
   # DE
-  "Dx1fO","a7eVM",
-  "i1RhM","Bsp3H",
-  "VqlJy","cJ9NA",
-  "Ir09o","ic1Hw",
-  "k5NEY","tFhxa",
+  "qpAKw","7wRiY",
+  "pIfGc","v6jnq",
+  
   
   # IT
-  "UTWq0","2LB0K",
-  "Pkwo0","WENIo",
-  "ROaJd","80Rpw",
-  "Urowj","JMav4",
-  "P86Hn","z4Xpy"
+  "zoSB0","rFsC9",
+  "ctDyD","ZH94w",
+  
+  ##kanton id
+  "lz2ru","3AMo7","YG8ja"
 )
 
 
 
 
+#kantonale_id <- c("ErkU1","Nccyy","Mdi2U")
 
-
-kantonale_id <- c("jjjYB","6q0ZA","u4Rfa")
 
 
 manual_chart_summary <- data.frame("",
@@ -70,10 +64,10 @@ for (chart_id in manual_chart_ids) {
 }
 
 manual_chart_summary <- manual_chart_summary %>%
-  dplyr::mutate(date = "2026-03-08",
+  dplyr::mutate(date = "2026-09-27",
          Typ = dplyr::case_when(ID %in% kantonale_id ~ "Kantone",
                                 TRUE ~ as.character("Top10")))
 
-save_xlsx <- "C:/Users/yove/OneDrive - KEYSTONE-SDA-ATS AG/Dokumente/selfpick/data-raw/resources/vot_fed_03_2026/top_flop_summaries.xlsx"
+save_xlsx <- "c:/users/yove/R/selfpick/data-raw/resources/vot_fed_09_2026/top_flop_summaries.xlsx"
 
 writexl::write_xlsx(manual_chart_summary, save_xlsx)

@@ -8,7 +8,7 @@ simulation <- FALSE
 save_texts <- FALSE
 
 #Output for special Einzugsgebiete? Default FALSE
-SPECIAL_AREAS <- FALSE
+SPECIAL_AREAS <- TRUE
 
 #Mail
 DEFAULT_MAILS <- "contentdevelopment@keystone-sda.ch, robot-notification@awp.ch"
